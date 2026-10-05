@@ -1,0 +1,3 @@
+Average Order Value =
+// NZD per distinct order.
+DIVIDE ( [Total Revenue], [Total Orders] )

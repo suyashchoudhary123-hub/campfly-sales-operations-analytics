@@ -1,0 +1,12 @@
+Top 5 Customers Share of Revenue =
+// Exactly five where available: Customer Index breaks revenue ties deterministically.
+// Respects noncustomer slicers and the selected customer universe.
+VAR Universe = ALLSELECTED ( DimCustomer )
+VAR MissingInUniverse = CALCULATE ( [Missing FX Rows], Universe )
+VAR Scored = FILTER (
+    ADDCOLUMNS ( Universe, "@Revenue", CALCULATE ( [Total Revenue] ) ),
+    NOT ISBLANK ( [@Revenue] ) )
+VAR TopCustomers = TOPN ( 5, Scored, [@Revenue], DESC, DimCustomer[Customer Index], ASC )
+RETURN
+    IF ( MissingInUniverse > 0, BLANK (),
+        DIVIDE ( SUMX ( TopCustomers, [@Revenue] ), SUMX ( Scored, [@Revenue] ) ) )

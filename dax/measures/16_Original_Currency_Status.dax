@@ -1,0 +1,7 @@
+Original Currency Status =
+// No selected currency means ALL currencies, not NZD.
+IF (
+    HASONEVALUE ( DimCurrency[Currency Code] ),
+    "Original currency: " & SELECTEDVALUE ( DimCurrency[Currency Code] ),
+    "Select exactly one currency to view original amounts"
+)

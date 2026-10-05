@@ -1,0 +1,3 @@
+YTD Revenue =
+// Calendar-year cumulative NZD revenue.
+CALCULATE ( [Total Revenue], DATESYTD ( DimDate[Date] ) )

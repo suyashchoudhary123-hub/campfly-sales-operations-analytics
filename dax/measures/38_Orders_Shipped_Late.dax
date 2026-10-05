@@ -1,0 +1,3 @@
+Orders Shipped Late =
+// Analytical definition: lead time strictly OVER 10 calendar days; not a verified SLA.
+CALCULATE ( [Total Orders], KEEPFILTERS ( FactSales[Lead Time (days)] > 10 ) )

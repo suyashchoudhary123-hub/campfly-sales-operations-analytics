@@ -1,0 +1,3 @@
+Total Quantity =
+// Units sold in the current selection.
+SUM ( FactSales[Order Quantity] )

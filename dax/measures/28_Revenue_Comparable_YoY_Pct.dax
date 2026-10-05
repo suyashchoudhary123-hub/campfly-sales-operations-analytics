@@ -1,0 +1,6 @@
+Revenue Comparable YoY % =
+// Safest annual comparison for this dataset; 2017 has no prior-year observations.
+VAR CurrentRevenue = [Revenue Through Comparable Cutoff]
+VAR PriorRevenue = [Revenue PY Through Comparable Cutoff]
+RETURN IF ( ISBLANK ( CurrentRevenue ) || ISBLANK ( PriorRevenue ),
+    BLANK (), DIVIDE ( CurrentRevenue - PriorRevenue, PriorRevenue ) )

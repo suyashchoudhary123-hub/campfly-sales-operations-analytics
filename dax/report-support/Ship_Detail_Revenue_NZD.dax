@@ -1,0 +1,7 @@
+Ship Detail Revenue NZD =
+// Ship-context conversion, disabling order relationship explicitly for row details.
+CALCULATE (
+    [Total Revenue],
+    CROSSFILTER ( DimDate[Date], FactSales[Order Date], NONE ),
+    USERELATIONSHIP ( FactSales[Ship Date], DimDate[Date] )
+)

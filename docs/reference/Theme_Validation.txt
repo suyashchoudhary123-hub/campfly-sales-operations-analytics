@@ -1,0 +1,3 @@
+Passed JSON Schema validation against Microsoft reportThemeSchema-2.157.json.
+This checks schema validity, not a rendered Power BI import.
+Schema source: https://raw.githubusercontent.com/microsoft/powerbi-desktop-samples/main/Report%20Theme%20JSON%20Schema/reportThemeSchema-2.157.json

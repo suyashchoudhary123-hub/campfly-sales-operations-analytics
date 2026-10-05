@@ -1,0 +1,17 @@
+Product Bottom Position =
+// Unique ascending position; Product Index breaks ties. Use <=5 for exactly five.
+VAR CurrentRevenue = [Total Revenue]
+VAR CurrentKey = SELECTEDVALUE ( DimProduct[Product Index] )
+VAR Universe = ALLSELECTED ( DimProduct )
+VAR Missing = CALCULATE ( [Missing FX Rows], Universe )
+VAR Scored = FILTER (
+    ADDCOLUMNS ( Universe, "@Revenue", CALCULATE ( [Total Revenue] ) ),
+    NOT ISBLANK ( [@Revenue] )
+)
+RETURN
+    IF ( ISBLANK ( CurrentKey ) || ISBLANK ( CurrentRevenue ) || Missing > 0,
+        BLANK (),
+        1 + COUNTROWS ( FILTER ( Scored,
+            ROUND ( [@Revenue], 2 ) < ROUND ( CurrentRevenue, 2 ) ||
+            ( ROUND ( [@Revenue], 2 ) = ROUND ( CurrentRevenue, 2 ) &&
+              DimProduct[Product Index] < CurrentKey ) ) ) )

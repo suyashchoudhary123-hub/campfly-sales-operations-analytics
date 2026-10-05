@@ -1,0 +1,39 @@
+{
+  "name": "Campfly Sales & Operations \u2014 Navy Teal",
+  "dataColors": [
+    "#007F7B",
+    "#2463A0",
+    "#C87800",
+    "#7C5AA6",
+    "#C84B52",
+    "#64748B"
+  ],
+  "background": "#F4F7FB",
+  "foreground": "#12304A",
+  "tableAccent": "#007F7B",
+  "good": "#007F7B",
+  "neutral": "#C87800",
+  "bad": "#C84B52",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI",
+      "fontSize": 14,
+      "color": "#12304A"
+    },
+    "header": {
+      "fontFace": "Segoe UI",
+      "fontSize": 12,
+      "color": "#12304A"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#516579"
+    },
+    "callout": {
+      "fontFace": "Segoe UI",
+      "fontSize": 24,
+      "color": "#12304A"
+    }
+  }
+}

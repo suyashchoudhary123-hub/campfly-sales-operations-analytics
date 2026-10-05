@@ -1,0 +1,3 @@
+Customer Revenue Share % =
+// Within each year/matrix column, selected customer shares add to 100%.
+DIVIDE ( [Total Revenue], CALCULATE ( [Total Revenue], ALLSELECTED ( DimCustomer ) ) )

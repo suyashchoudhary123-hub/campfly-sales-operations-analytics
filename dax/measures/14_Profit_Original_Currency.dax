@@ -1,0 +1,5 @@
+Profit Original Currency =
+// Same-currency source cost assumption applies here too.
+VAR Revenue = [Revenue Original Currency]
+VAR Cost = [Cost Original Currency]
+RETURN IF ( ISBLANK ( Revenue ) || ISBLANK ( Cost ), BLANK (), Revenue - Cost )

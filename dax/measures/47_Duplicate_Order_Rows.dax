@@ -1,0 +1,3 @@
+Duplicate Order Rows =
+// Expected zero; monitors whether source grain changes on later refreshes.
+COUNTROWS ( FactSales ) - DISTINCTCOUNT ( FactSales[Order Number] )

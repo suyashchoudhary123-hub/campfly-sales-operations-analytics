@@ -1,0 +1,7 @@
+Revenue MoM % =
+// Partial months require interpretation: December 2019 ends on December 12.
+VAR CurrentRevenue = [Total Revenue]
+VAR PriorRevenue = [Revenue Previous Month]
+RETURN
+    IF ( ISBLANK ( CurrentRevenue ) || ISBLANK ( PriorRevenue ),
+        BLANK (), DIVIDE ( CurrentRevenue - PriorRevenue, PriorRevenue ) )

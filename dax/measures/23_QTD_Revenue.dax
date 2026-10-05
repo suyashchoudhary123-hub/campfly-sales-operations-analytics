@@ -1,0 +1,3 @@
+QTD Revenue =
+// Calendar-quarter cumulative NZD revenue.
+CALCULATE ( [Total Revenue], DATESQTD ( DimDate[Date] ) )

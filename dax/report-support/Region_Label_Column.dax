@@ -1,0 +1,4 @@
+Region Label =
+// Calculated COLUMN in DimRegion, not a measure. Prevents ambiguous suburb grouping.
+DimRegion[Suburb] & ", " & DimRegion[City]
+    & " [" & FORMAT ( DimRegion[Region Index], "0" ) & "]"

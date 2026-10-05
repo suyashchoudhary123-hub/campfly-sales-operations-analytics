@@ -1,0 +1,7 @@
+Revenue vs Previous Year =
+// Absolute NZD difference. Blank when either period is unavailable.
+VAR CurrentRevenue = [Total Revenue]
+VAR PriorRevenue = [Revenue Previous Year]
+RETURN
+    IF ( ISBLANK ( CurrentRevenue ) || ISBLANK ( PriorRevenue ),
+        BLANK (), CurrentRevenue - PriorRevenue )

@@ -1,0 +1,11 @@
+Revenue PY Through Comparable Cutoff =
+// 2019 compares Jan 1-Dec 12 against Jan 1-Dec 12 2018.
+VAR SelectedYear = SELECTEDVALUE ( DimDate[Year] )
+VAR LastLoaded = [Latest Loaded Order Date]
+VAR CurrentEnd = IF ( SelectedYear = YEAR ( LastLoaded ),
+    LastLoaded, DATE ( SelectedYear, 12, 31 ) )
+VAR PriorEnd = EDATE ( CurrentEnd, -12 )
+VAR Window = DATESBETWEEN ( DimDate[Date], DATE ( SelectedYear - 1, 1, 1 ), PriorEnd )
+RETURN
+    IF ( ISBLANK ( SelectedYear ) || SelectedYear > YEAR ( LastLoaded ),
+        BLANK (), CALCULATE ( [Total Revenue], REMOVEFILTERS ( DimDate ), Window ) )

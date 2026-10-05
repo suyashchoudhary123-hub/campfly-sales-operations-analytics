@@ -1,0 +1,3 @@
+_Measures =
+// A disconnected one-row table used only to organize measures.
+DATATABLE ( "Placeholder", INTEGER, { { 1 } } )

@@ -1,0 +1,18 @@
+Selection,Measure,Expected value
+All currencies,Total Orders,7991.0
+All currencies,Total Quantity,67579.0
+All currencies,Average Lead Time,10.435865348517082
+All currencies,Orders Shipped Late,3940.0
+All currencies,Late Shipment %,0.49305468652233764
+All currencies,Missing FX Rows (only NZD supplied),4965.0
+NZD only,Total Orders,3026.0
+NZD only,Total Quantity,25623.0
+NZD only,Total Revenue,58149949.9
+NZD only,Total Cost,36445236.116000004
+NZD only,Total Profit,21704713.784
+NZD only,Profit Margin %,0.3732542129670864
+NZD only,Average Order Value,19216.771282220754
+NZD only,Average Selling Price,2269.4434648557935
+NZD only; 2019 year selected,Revenue Through Comparable Cutoff,18206191.400000002
+NZD only; 2019 year selected,Revenue PY Through Comparable Cutoff,18549298.400000002
+NZD only; 2019 year selected,Revenue Comparable YoY %,-0.018497033828513976

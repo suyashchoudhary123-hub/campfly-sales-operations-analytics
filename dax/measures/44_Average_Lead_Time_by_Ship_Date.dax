@@ -1,0 +1,3 @@
+Average Lead Time by Ship Date =
+// Mean lead time for orders shipped in the selected date window.
+CALCULATE ( [Average Lead Time], USERELATIONSHIP ( FactSales[Ship Date], DimDate[Date] ) )

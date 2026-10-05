@@ -1,0 +1,8 @@
+FX Status =
+// Put on a card so blank financial KPIs have an explanation.
+SWITCH (
+    TRUE (),
+    COUNTROWS ( FactSales ) = 0, "No transactions in this selection",
+    [Missing FX Rows] > 0, "STOP: supply positive assumed FX rates for selected transactions",
+    "FX complete for this selection; assumed fixed-rate scenario"
+)

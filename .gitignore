@@ -1,0 +1,9 @@
+# Power BI local cache / autosave
+.pbi/
+*.pbix.bak
+*.tmp
+~$*
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

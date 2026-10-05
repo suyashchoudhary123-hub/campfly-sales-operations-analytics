@@ -1,0 +1,48 @@
+Name,Display folder,Format
+Missing FX Rows,00 Quality,"#,0"
+FX Status,00 Quality,Text
+Total Revenue,01 Finance,"#,0.00"
+Total Cost,01 Finance,"#,0.00"
+Total Profit,01 Finance,"#,0.00"
+Profit Margin %,01 Finance,0.0%
+Total Orders,01 Finance,"#,0"
+Total Quantity,01 Finance,"#,0"
+Average Order Value,01 Finance,"#,0.00"
+Average Selling Price,01 Finance,"#,0.00"
+Original Currency Code,02 Original Currency,Text
+Revenue Original Currency,02 Original Currency,"#,0.00"
+Cost Original Currency,02 Original Currency,"#,0.00"
+Profit Original Currency,02 Original Currency,"#,0.00"
+Margin Original Currency %,02 Original Currency,0.0%
+Original Currency Status,02 Original Currency,Text
+Revenue Previous Year,03 Time Intelligence,"#,0.00"
+Revenue vs Previous Year,03 Time Intelligence,"#,0.00"
+Revenue YoY %,03 Time Intelligence,0.0%
+Revenue Previous Month,03 Time Intelligence,"#,0.00"
+Revenue MoM %,03 Time Intelligence,0.0%
+YTD Revenue,03 Time Intelligence,"#,0.00"
+QTD Revenue,03 Time Intelligence,"#,0.00"
+Rolling 3-Month Revenue,03 Time Intelligence,"#,0.00"
+Latest Loaded Order Date,00 Quality,yyyy-MM-dd
+Revenue Through Comparable Cutoff,04 Comparable Period,"#,0.00"
+Revenue PY Through Comparable Cutoff,04 Comparable Period,"#,0.00"
+Revenue Comparable YoY %,04 Comparable Period,0.0%
+Customer Rank,05 Rankings,0
+Product Rank,05 Rankings,0
+Product Bottom Rank,05 Rankings,0
+Top 5 Customers Share of Revenue,05 Rankings,0.0%
+% of Total Revenue,05 Rankings,0.0%
+Customer Revenue Share %,05 Rankings,0.0%
+Customer Pareto Cumulative %,05 Rankings,0.0%
+Pareto 80% Target,05 Rankings,0.0%
+Average Lead Time,06 Operations,0.0
+Orders Shipped Late,06 Operations,"#,0"
+Late Shipment %,06 Operations,0.0%
+Orders by Ship Date,06 Operations,"#,0"
+Revenue by Ship Date,06 Operations,"#,0.00"
+Late Orders by Ship Date,06 Operations,"#,0"
+Late Shipment % by Ship Date,06 Operations,0.0%
+Average Lead Time by Ship Date,06 Operations,0.0
+Revenue Reconciliation Difference,00 Quality,0.000000
+Negative Lead Time Rows,00 Quality,"#,0"
+Duplicate Order Rows,00 Quality,"#,0"

@@ -1,0 +1,7 @@
+Revenue Original Currency =
+// Do not aggregate incomparable currencies. This does not require FX rates.
+IF (
+    HASONEVALUE ( DimCurrency[Currency Code] ),
+    SUM ( FactSales[Total Revenue] ),
+    BLANK ()
+)

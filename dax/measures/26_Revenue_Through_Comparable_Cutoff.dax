@@ -1,0 +1,10 @@
+Revenue Through Comparable Cutoff =
+// Use with ONE year selected, not a monthly chart. Intentionally ignores lower date filters.
+VAR SelectedYear = SELECTEDVALUE ( DimDate[Year] )
+VAR LastLoaded = [Latest Loaded Order Date]
+VAR EndDate = IF ( SelectedYear = YEAR ( LastLoaded ),
+    LastLoaded, DATE ( SelectedYear, 12, 31 ) )
+VAR Window = DATESBETWEEN ( DimDate[Date], DATE ( SelectedYear, 1, 1 ), EndDate )
+RETURN
+    IF ( ISBLANK ( SelectedYear ) || SelectedYear > YEAR ( LastLoaded ),
+        BLANK (), CALCULATE ( [Total Revenue], REMOVEFILTERS ( DimDate ), Window ) )

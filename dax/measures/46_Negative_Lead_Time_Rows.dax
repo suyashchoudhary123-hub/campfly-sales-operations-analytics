@@ -1,0 +1,3 @@
+Negative Lead Time Rows =
+// Expected zero for the supplied workbook.
+COALESCE ( COUNTROWS ( FILTER ( FactSales, FactSales[Lead Time (days)] < 0 ) ), 0 )

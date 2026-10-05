@@ -1,0 +1,3 @@
+Revenue YoY % =
+// Do not interpret partial 2019 versus full 2018 as like-for-like.
+DIVIDE ( [Revenue vs Previous Year], [Revenue Previous Year] )

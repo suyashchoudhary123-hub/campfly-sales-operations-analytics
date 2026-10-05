@@ -1,0 +1,7 @@
+Total Revenue =
+// NZD: convert each transaction BEFORE summing; never silently skip missing rates.
+IF (
+    [Missing FX Rows] > 0,
+    BLANK (),
+    SUMX ( FactSales, FactSales[Total Revenue] * RELATED ( DimCurrency[Rate to NZD] ) )
+)

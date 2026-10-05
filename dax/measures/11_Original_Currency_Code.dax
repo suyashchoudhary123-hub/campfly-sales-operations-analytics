@@ -1,0 +1,3 @@
+Original Currency Code =
+// A connected currency slicer must select one currency for original-currency cards.
+SELECTEDVALUE ( DimCurrency[Currency Code] )

@@ -1,0 +1,3 @@
+Late Orders by Ship Date =
+// Use this for the Operations late-shipment trend.
+CALCULATE ( [Orders Shipped Late], USERELATIONSHIP ( FactSales[Ship Date], DimDate[Date] ) )

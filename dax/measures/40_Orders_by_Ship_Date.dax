@@ -1,0 +1,3 @@
+Orders by Ship Date =
+// Uses inactive shipment relationship instead of active order-date relationship.
+CALCULATE ( [Total Orders], USERELATIONSHIP ( FactSales[Ship Date], DimDate[Date] ) )

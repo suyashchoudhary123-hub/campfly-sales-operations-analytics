@@ -1,0 +1,3 @@
+Revenue Reconciliation Difference =
+// QA in raw currency units only: test row arithmetic, NOT an economic mixed-currency total.
+SUMX ( FactSales, FactSales[Total Revenue] - FactSales[Order Quantity] * FactSales[Unit Price] )

@@ -1,0 +1,14 @@
+Product Rank =
+// Dense revenue rank within slicer-selected products. Ties share a rank.
+// Rounding at comparison time prevents floating-point equality surprises.
+VAR CurrentRevenue = [Total Revenue]
+VAR Universe = ALLSELECTED ( DimProduct )
+VAR MissingInUniverse = CALCULATE ( [Missing FX Rows], Universe )
+VAR Scored = FILTER (
+    ADDCOLUMNS ( Universe, "@Revenue", CALCULATE ( [Total Revenue] ) ),
+    NOT ISBLANK ( [@Revenue] ) )
+RETURN
+    IF ( NOT HASONEVALUE ( DimProduct[Product Index] ) ||
+         ISBLANK ( CurrentRevenue ) || MissingInUniverse > 0,
+         BLANK (),
+         RANKX ( Scored, ROUND ( [@Revenue], 2 ), ROUND ( CurrentRevenue, 2 ), DESC, DENSE ) )

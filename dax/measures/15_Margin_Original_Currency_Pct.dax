@@ -1,0 +1,3 @@
+Margin Original Currency % =
+// Available without FX when exactly one source currency is selected.
+DIVIDE ( [Profit Original Currency], [Revenue Original Currency] )

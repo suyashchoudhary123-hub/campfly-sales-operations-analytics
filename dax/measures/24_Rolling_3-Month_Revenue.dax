@@ -1,0 +1,7 @@
+Rolling 3-Month Revenue =
+// Trailing three-month date window ending at the axis/context date.
+// On a Year Month axis this gives three calendar months; an incomplete month stays incomplete.
+VAR EndDate = MAX ( DimDate[Date] )
+VAR Window = DATESINPERIOD ( DimDate[Date], EndDate, -3, MONTH )
+RETURN
+    CALCULATE ( [Total Revenue], REMOVEFILTERS ( DimDate ), Window )

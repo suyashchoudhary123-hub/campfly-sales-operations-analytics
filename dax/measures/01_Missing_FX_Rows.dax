@@ -1,0 +1,11 @@
+Missing FX Rows =
+// Count visible transactions without a positive, usable conversion rate.
+COALESCE (
+    COUNTROWS (
+        FILTER (
+            FactSales,
+            VAR Rate = RELATED ( DimCurrency[Rate to NZD] )
+            RETURN ISBLANK ( Rate ) || Rate <= 0
+        )
+    ), 0
+)

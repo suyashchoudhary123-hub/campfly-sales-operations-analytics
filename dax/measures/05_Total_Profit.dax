@@ -1,0 +1,5 @@
+Total Profit =
+// Guard against BLANK arithmetic; source costs assumed to share transaction currency.
+VAR Revenue = [Total Revenue]
+VAR Cost = [Total Cost]
+RETURN IF ( ISBLANK ( Revenue ) || ISBLANK ( Cost ), BLANK (), Revenue - Cost )

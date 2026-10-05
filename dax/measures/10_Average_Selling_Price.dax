@@ -1,0 +1,3 @@
+Average Selling Price =
+// Quantity-weighted selling price, NZD per unit.
+DIVIDE ( [Total Revenue], [Total Quantity] )

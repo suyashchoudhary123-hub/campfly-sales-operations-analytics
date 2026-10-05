@@ -1,0 +1,3 @@
+Latest Loaded Order Date =
+// Dataset-wide cutoff, intentionally unaffected by any report selection.
+CALCULATE ( MAX ( FactSales[Order Date] ), REMOVEFILTERS () )

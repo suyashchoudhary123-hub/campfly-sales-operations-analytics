@@ -1,0 +1,3 @@
+Revenue by Ship Date =
+// Converted NZD revenue attributed to shipment date, with the same FX safeguards.
+CALCULATE ( [Total Revenue], USERELATIONSHIP ( FactSales[Ship Date], DimDate[Date] ) )

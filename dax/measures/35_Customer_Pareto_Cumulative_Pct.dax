@@ -1,0 +1,17 @@
+Customer Pareto Cumulative % =
+// Sort customer bars by rounded revenue DESC, then Customer Index ASC.
+// Ties are broken by Customer Index so the cumulative curve is deterministic.
+VAR CurrentRevenue = [Total Revenue]
+VAR CurrentKey = SELECTEDVALUE ( DimCustomer[Customer Index] )
+VAR Universe = ALLSELECTED ( DimCustomer )
+VAR MissingInUniverse = CALCULATE ( [Missing FX Rows], Universe )
+VAR Scored = FILTER (
+    ADDCOLUMNS ( Universe, "@Revenue", CALCULATE ( [Total Revenue] ) ),
+    NOT ISBLANK ( [@Revenue] ) )
+VAR RunningRows = FILTER ( Scored,
+    ROUND ( [@Revenue], 2 ) > ROUND ( CurrentRevenue, 2 ) ||
+    ( ROUND ( [@Revenue], 2 ) = ROUND ( CurrentRevenue, 2 ) &&
+      DimCustomer[Customer Index] <= CurrentKey ) )
+RETURN
+    IF ( ISBLANK ( CurrentKey ) || ISBLANK ( CurrentRevenue ) || MissingInUniverse > 0,
+        BLANK (), DIVIDE ( SUMX ( RunningRows, [@Revenue] ), SUMX ( Scored, [@Revenue] ) ) )

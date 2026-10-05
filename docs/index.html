@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campfly Sales Intelligence</title>
+<meta name="description" content="Power BI sales and operations analytics project: data model, DAX measures and report blueprint.">
+<style>
+:root{--navy:#12304a;--teal:#007f7b;--bg:#f4f7fb;--card:#fff;--line:#d6e0ea;--muted:#516579;--amber:#c87800}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--navy);line-height:1.55}
+header{background:var(--navy);color:#fff;padding:48px 16px 40px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header .wrap{padding:0}
+h1{margin:0 0 8px;font-size:clamp(26px,5vw,40px)}
+header p{margin:0;color:#c9d8e6;max-width:640px}
+.links{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;padding:9px 16px;border-radius:6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+.btn.alt{background:transparent;border:1px solid #6f8aa3}
+.notice{background:#fff7e8;border:1px solid #ecd2a0;border-left:4px solid var(--amber);padding:12px 16px;border-radius:6px;margin:24px 0;font-size:15px}
+section{margin:36px 0}
+h2{font-size:22px;margin:0 0 14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px}
+.stat{font-size:28px;font-weight:700;color:var(--teal)}
+.label{color:var(--muted);font-size:14px}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px}
+figure img{width:100%;height:auto;display:block;border-radius:4px}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.shots{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+table{border-collapse:collapse;width:100%;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{background:#e9eff6}
+.scroll{overflow-x:auto}
+ol li{margin-bottom:6px}
+code{background:#e9eff6;padding:1px 6px;border-radius:4px;font-size:90%}
+footer{padding:28px 16px;color:var(--muted);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Campfly | Sales &amp; Operations Intelligence</h1>
+<p>A Power BI project on 7,991 orders: star-schema model, 47 documented DAX measures and a six-page report blueprint.</p>
+<div class="links">
+<a class="btn" href="https://github.com/suyashchoudhary123-hub/campfly-sales-operations-analytics">View on GitHub</a>
+<a class="btn alt" href="guides/Stage_1_Build_Guide.md">Build guides</a>
+</div>
+</div></header>
+
+<main class="wrap">
+<div class="notice"><strong>Project status:</strong> this is a build package. The report file has not been built in Power BI Desktop yet, and the page images below are design wireframes, not screenshots of a finished report.</div>
+
+<section>
+<h2>The data</h2>
+<div class="grid">
+<div class="card"><div class="stat">7,991</div><div class="label">orders, 1 Jan 2017 to 12 Dec 2019</div></div>
+<div class="card"><div class="stat">50 / 15 / 100</div><div class="label">customers / products / regions</div></div>
+<div class="card"><div class="stat">5</div><div class="label">source currencies, no exchange rates supplied</div></div>
+<div class="card"><div class="stat">49.3%</div><div class="label">of orders ship in more than 10 days</div></div>
+</div>
+</section>
+
+<section>
+<h2>Key findings</h2>
+<div class="grid">
+<div class="card"><div class="stat">-1.85%</div><div class="label">2019 vs 2018, both to 12 Dec. Sales are flat, not falling.</div></div>
+<div class="card"><div class="stat">54.1%</div><div class="label">of NZD revenue is Wholesale; margin is about 37% in every channel.</div></div>
+<div class="card"><div class="stat">73.2%</div><div class="label">of NZD revenue comes from the top 5 of 14 selling products.</div></div>
+<div class="card"><div class="stat">12.7%</div><div class="label">of NZD revenue is from the top 5 customers: low concentration risk.</div></div>
+</div>
+<p class="label">Money figures use NZD orders only (37.9% of orders) because no exchange rates were supplied. <a href="guides/Stage_4_Insights_and_Portfolio.md">Full insights and recommendations</a>.</p>
+</section>
+
+<section>
+<h2>Data model</h2>
+<figure>
+<img src="assets/data_model.png" alt="Star schema with FactSales in the centre connected to DimCustomer, DimProduct, DimRegion, DimCurrency, DimDate, DimChannel and DimWarehouse">
+<figcaption>One fact table and seven dimensions. The Ship Date relationship to DimDate is inactive and activated in DAX with USERELATIONSHIP.</figcaption>
+</figure>
+</section>
+
+<section>
+<h2>Report pages (design wireframes)</h2>
+<div class="shots">
+<figure><img src="assets/Executive_Overview_Wireframe.png" alt="Executive Overview wireframe" loading="lazy"><figcaption>Executive Overview</figcaption></figure>
+<figure><img src="assets/Product_Analysis_Wireframe.png" alt="Product Analysis wireframe" loading="lazy"><figcaption>Product Analysis</figcaption></figure>
+<figure><img src="assets/Customer_Analysis_Wireframe.png" alt="Customer Analysis wireframe" loading="lazy"><figcaption>Customer Analysis</figcaption></figure>
+<figure><img src="assets/Geographic_Analysis_Wireframe.png" alt="Geographic Analysis wireframe" loading="lazy"><figcaption>Geographic Analysis</figcaption></figure>
+<figure><img src="assets/Operations_Wireframe.png" alt="Operations wireframe" loading="lazy"><figcaption>Operations</figcaption></figure>
+<figure><img src="assets/Details_Wireframe.png" alt="Details wireframe" loading="lazy"><figcaption>Details</figcaption></figure>
+</div>
+</section>
+
+<section>
+<h2>Verified benchmarks</h2>
+<div class="scroll"><table>
+<tr><th>Selection</th><th>Measure</th><th>Value</th></tr>
+<tr><td>All orders</td><td>Total quantity</td><td>67,579</td></tr>
+<tr><td>All orders</td><td>Average lead time</td><td>10.44 days</td></tr>
+<tr><td>All orders</td><td>Orders shipped late (over 10 days)</td><td>3,940</td></tr>
+<tr><td>NZD orders only</td><td>Revenue</td><td>NZD 58,149,949.90</td></tr>
+<tr><td>NZD orders only</td><td>Profit margin</td><td>37.3%</td></tr>
+<tr><td>NZD orders only</td><td>2019 vs 2018, both to 12 Dec</td><td>-1.85%</td></tr>
+</table></div>
+<p class="label">Computed from the workbook in Python. NZD-only figures exclude USD, AUD, GBP and EUR orders. Non-NZD exchange rates are intentionally left for the report author to supply.</p>
+</section>
+
+<section>
+<h2>How it is built</h2>
+<ol>
+<li>Power Query cleans the workbook into <code>FactSales</code> and seven dimension tables.</li>
+<li><code>DimDate</code> is a DAX calendar; Order Date is the active relationship.</li>
+<li>Measures convert currency row by row and return blank, rather than a wrong total, when a rate is missing.</li>
+<li>2019 is a partial year, so a matched-cutoff year-over-year measure is used.</li>
+<li>A navy and teal theme and exact pixel layouts keep all six pages consistent.</li>
+</ol>
+</section>
+</main>
+<footer>Campfly project by Suyash Choudhary. MIT licence.</footer>
+</body>
+</html>

@@ -1,0 +1,3 @@
+Profit Margin % =
+// Weighted margin, not an average of transaction margins.
+DIVIDE ( [Total Profit], [Total Revenue] )

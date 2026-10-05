@@ -1,0 +1,9 @@
+Dimension,Dimension column,FactSales column,Active,Cardinality,Filter
+DimCustomer,Customer Index,Customer Index,Yes,1:*,Single: dimension to FactSales
+DimRegion,Region Index,Region Index,Yes,1:*,Single: dimension to FactSales
+DimProduct,Product Index,Product Index,Yes,1:*,Single: dimension to FactSales
+DimCurrency,Currency Code,Currency Code,Yes,1:*,Single: dimension to FactSales
+DimChannel,Channel,Channel,Yes,1:*,Single: dimension to FactSales
+DimWarehouse,Warehouse Code,Warehouse Code,Yes,1:*,Single: dimension to FactSales
+DimDate,Date,Order Date,Yes,1:*,Single: dimension to FactSales
+DimDate,Date,Ship Date,No,1:*,Single: dimension to FactSales

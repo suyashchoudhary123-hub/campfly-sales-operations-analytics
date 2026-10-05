@@ -1,0 +1,8 @@
+Ship Detail Row Visible =
+// For FACT-ONLY grouping on the hidden ship-month details table. Validate in Desktop.
+VAR RowsByShip = CALCULATE (
+    COUNTROWS ( FactSales ),
+    CROSSFILTER ( DimDate[Date], FactSales[Order Date], NONE ),
+    USERELATIONSHIP ( FactSales[Ship Date], DimDate[Date] )
+)
+RETURN IF ( RowsByShip > 0, 1, BLANK () )

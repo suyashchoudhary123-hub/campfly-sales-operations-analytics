@@ -1,0 +1,3 @@
+Total Orders =
+// Distinct orders; source currently has one record per order.
+DISTINCTCOUNT ( FactSales[Order Number] )

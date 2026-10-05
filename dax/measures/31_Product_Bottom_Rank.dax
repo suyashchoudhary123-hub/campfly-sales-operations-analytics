@@ -1,0 +1,13 @@
+Product Bottom Rank =
+// Ascending dense rank: lowest revenue is rank 1; ties can produce >5 products.
+VAR CurrentRevenue = [Total Revenue]
+VAR Universe = ALLSELECTED ( DimProduct )
+VAR MissingInUniverse = CALCULATE ( [Missing FX Rows], Universe )
+VAR Scored = FILTER (
+    ADDCOLUMNS ( Universe, "@Revenue", CALCULATE ( [Total Revenue] ) ),
+    NOT ISBLANK ( [@Revenue] ) )
+RETURN
+    IF ( NOT HASONEVALUE ( DimProduct[Product Index] ) ||
+         ISBLANK ( CurrentRevenue ) || MissingInUniverse > 0,
+         BLANK (),
+         RANKX ( Scored, ROUND ( [@Revenue], 2 ), ROUND ( CurrentRevenue, 2 ), ASC, DENSE ) )

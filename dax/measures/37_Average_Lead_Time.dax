@@ -1,0 +1,3 @@
+Average Lead Time =
+// Order-weighted mean: one source record per order, measured in calendar days.
+AVERAGE ( FactSales[Lead Time (days)] )

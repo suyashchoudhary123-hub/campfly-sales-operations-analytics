@@ -1,0 +1,3 @@
+Late Shipment % =
+// By order date unless shipment-date measures below are used.
+DIVIDE ( [Orders Shipped Late], [Total Orders] )

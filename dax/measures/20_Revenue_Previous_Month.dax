@@ -1,0 +1,3 @@
+Revenue Previous Month =
+// Use with DimDate[Year Month] axis; it shifts the current date window one month.
+CALCULATE ( [Total Revenue], DATEADD ( DimDate[Date], -1, MONTH ) )

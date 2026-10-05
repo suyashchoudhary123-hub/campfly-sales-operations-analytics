@@ -1,0 +1,3 @@
+Late Shipment % by Ship Date =
+// Shipment-date numerator and denominator must use the same date role.
+DIVIDE ( [Late Orders by Ship Date], [Orders by Ship Date] )

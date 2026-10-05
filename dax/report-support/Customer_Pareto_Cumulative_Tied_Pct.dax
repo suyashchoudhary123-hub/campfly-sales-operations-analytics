@@ -1,0 +1,15 @@
+Customer Pareto Cumulative Tied % =
+// Native visual-safe Pareto: customers tied at two-decimal revenue share a cumulative value.
+// Sort the complete selected customer chart by Total Revenue descending.
+VAR CurrentRevenue = [Total Revenue]
+VAR Universe = ALLSELECTED ( DimCustomer )
+VAR Missing = CALCULATE ( [Missing FX Rows], Universe )
+VAR Scored = FILTER (
+    ADDCOLUMNS ( Universe, "@Revenue", CALCULATE ( [Total Revenue] ) ),
+    NOT ISBLANK ( [@Revenue] )
+)
+VAR RunningRows = FILTER ( Scored, ROUND ( [@Revenue], 2 ) >= ROUND ( CurrentRevenue, 2 ) )
+RETURN
+    IF ( NOT HASONEVALUE ( DimCustomer[Customer Index] ) ||
+         ISBLANK ( CurrentRevenue ) || Missing > 0,
+         BLANK (), DIVIDE ( SUMX ( RunningRows, [@Revenue] ), SUMX ( Scored, [@Revenue] ) ) )

@@ -1,0 +1,3 @@
+Revenue Previous Year =
+// Shift the date selection one calendar year; standard full-year selections remain full-year.
+CALCULATE ( [Total Revenue], SAMEPERIODLASTYEAR ( DimDate[Date] ) )

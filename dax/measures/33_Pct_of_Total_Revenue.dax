@@ -1,0 +1,4 @@
+% of Total Revenue =
+// Share of selected visual total; retains external slicers.
+// In a customer-by-year matrix the denominator is the selected grand total.
+DIVIDE ( [Total Revenue], CALCULATE ( [Total Revenue], ALLSELECTED () ) )
