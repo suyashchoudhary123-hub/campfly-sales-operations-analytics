@@ -40,10 +40,10 @@ footer{padding:28px 16px;color:var(--muted);font-size:14px;text-align:center}
 <body>
 <header><div class="wrap">
 <h1>Campfly | Sales &amp; Operations Intelligence</h1>
-<p>A Power BI project on 7,991 orders: star-schema model, 47 documented DAX measures and a six-page report blueprint.</p>
+<p>A Power BI project on 7,991 orders: star-schema model, 47 documented DAX measures, a six-page report blueprint and eight verified insights.</p>
 <div class="links">
 <a class="btn" href="https://github.com/suyashchoudhary123-hub/campfly-sales-operations-analytics">View on GitHub</a>
-<a class="btn alt" href="guides/Stage_1_Build_Guide.md">Build guides</a>
+<a class="btn alt" href="https://github.com/suyashchoudhary123-hub/campfly-sales-operations-analytics/blob/main/docs/guides/Stage_1_Build_Guide.md">Build guides</a>
 </div>
 </div></header>
 
@@ -63,12 +63,12 @@ footer{padding:28px 16px;color:var(--muted);font-size:14px;text-align:center}
 <section>
 <h2>Key findings</h2>
 <div class="grid">
-<div class="card"><div class="stat">-1.85%</div><div class="label">2019 vs 2018, both to 12 Dec. Sales are flat, not falling.</div></div>
+<div class="card"><div class="stat">-1.85%</div><div class="label">2019 vs 2018, both to 12 Dec. The raw annual drop of 8.91% is only because 2019 ends on 12 Dec.</div></div>
 <div class="card"><div class="stat">54.1%</div><div class="label">of NZD revenue is Wholesale; margin is about 37% in every channel.</div></div>
 <div class="card"><div class="stat">73.2%</div><div class="label">of NZD revenue comes from the top 5 of 14 selling products.</div></div>
 <div class="card"><div class="stat">12.7%</div><div class="label">of NZD revenue is from the top 5 customers: low concentration risk.</div></div>
 </div>
-<p class="label">Money figures use NZD orders only (37.9% of orders) because no exchange rates were supplied. <a href="guides/Stage_4_Insights_and_Portfolio.md">Full insights and recommendations</a>.</p>
+<p class="label">Money figures use NZD orders only (37.9% of orders) because no exchange rates were supplied. <a href="https://github.com/suyashchoudhary123-hub/campfly-sales-operations-analytics/blob/main/docs/insights/Insights_and_Recommendations.md">Full insights and recommendations</a>.</p>
 </section>
 
 <section>
@@ -77,6 +77,16 @@ footer{padding:28px 16px;color:var(--muted);font-size:14px;text-align:center}
 <img src="assets/data_model.png" alt="Star schema with FactSales in the centre connected to DimCustomer, DimProduct, DimRegion, DimCurrency, DimDate, DimChannel and DimWarehouse">
 <figcaption>One fact table and seven dimensions. The Ship Date relationship to DimDate is inactive and activated in DAX with USERELATIONSHIP.</figcaption>
 </figure>
+</section>
+
+<section>
+<h2>Analysis charts (Python, from the workbook)</h2>
+<div class="shots">
+<figure><img src="assets/NZD_Comparable_Revenue_Analysis.png" alt="Bar chart: NZD revenue 1 Jan to 12 Dec, 2018 18.55m versus 2019 18.21m" loading="lazy"><figcaption>Matched-cutoff revenue, NZD orders only</figcaption></figure>
+<figure><img src="assets/Warehouse_Late_Rates_Analysis.png" alt="Late-order rate by warehouse" loading="lazy"><figcaption>Share of orders over 10 days, by warehouse (all orders)</figcaption></figure>
+<figure><img src="assets/NZD_Customer_Concentration_Analysis.png" alt="NZD customer revenue concentration" loading="lazy"><figcaption>Customer concentration, NZD orders only</figcaption></figure>
+</div>
+<p class="label">These are Python charts, not Power BI screenshots.</p>
 </section>
 
 <section>
