@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "browser": "Local Chromium headless",
+  "checks": [
+    "Default NZD revenue/count match workbook",
+    "All currencies with missing rates: blank finance, 4,965 missing FX",
+    "Mixed original currencies never aggregated",
+    "Original USD total correct",
+    "Page rendered: products",
+    "Page rendered: customers",
+    "Page rendered: geography",
+    "Page rendered: operations",
+    "Page rendered: details",
+    "Page rendered: overview",
+    "Product 20 retained and explicitly has no sales",
+    "Product 7 drill-down: 508 NZD orders",
+    "Ship-month drill cohort matches source: 102 orders",
+    "Positive scenario rates: conversion before summation verified",
+    "Order search filters records",
+    "Order pagination works",
+    "CSV export includes 7,991 filtered rows with guarded display columns",
+    "390px mobile viewport: no whole-page horizontal overflow",
+    "No browser JavaScript errors across tested flows",
+    "Relative asset loading verified over HTTP at a repository-style subpath",
+    "Mobile settings and reset buttons are visible and usable"
+  ],
+  "limitations": [
+    "OpenStreetMap tile service availability is external",
+    "GitHub deployment was not performed",
+    "Rates used in automated conversion test were temporary browser-only scenarios"
+  ]
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interactive Campfly sales and operations analytics, 2017–2019. Explore products, customers, geography and fulfillment with transparent currency assumptions.">
+  <meta name="theme-color" content="#112d40">
+  <title>Campfly · Sales intelligence</title>
+  <link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/plotly.min.js"></script><script defer src="vendor/leaflet.js"></script>
+  <script defer src="data.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to dashboard</a>
+<aside class="sidebar">
+  <a class="brand" href="#overview"><span class="brand-mark">C</span><span>CAMPFLY<small>SALES INTELLIGENCE</small></span></a>
+  <div class="side-label">YOUR WORKSPACE</div>
+  <nav aria-label="Dashboard pages" id="navigation">
+    <button data-page="overview" class="active"><span>01</span>Overview</button>
+    <button data-page="products"><span>02</span>Products</button>
+    <button data-page="customers"><span>03</span>Customers</button>
+    <button data-page="geography"><span>04</span>Geography</button>
+    <button data-page="operations"><span>05</span>Operations</button>
+    <button data-page="details"><span>06</span>Order details</button>
+  </nav>
+  <div class="side-bottom"><div class="dataset-dot">Historical dataset</div><p>2017—2019<br>7,991 source orders</p><button id="settingsButton" class="side-action">⚙ Currency & methodology</button><button id="resetButton" class="side-action">↻ Reset filters</button></div>
+</aside>
+<main id="main">
+  <header class="topbar"><div class="breadcrumb">CAMPFLY / ANALYTICS</div><div class="top-actions"><span class="source-pill">● Workbook verified</span><button id="exportButton" class="button secondary">↓ Export orders</button></div></header>
+  <section class="page-heading"><div><div class="eyebrow" id="pageEyebrow">THE BIG PICTURE</div><h1 id="pageTitle">Executive overview</h1><p id="pageSubtitle">A clear view of sales, profitability and the orders behind them.</p></div><div class="coverage"><span>ORDER COVERAGE</span><strong>01 Jan 2017 → 12 Dec 2019</strong><small>2019 is a partial year</small></div></section>
+  <section class="filterbar" aria-label="Dashboard filters">
+    <label>Year<select id="yearFilter"><option value="all">All years</option></select></label>
+    <label>Channel<select id="channelFilter"><option value="all">All channels</option></select></label>
+    <label>Source currency<select id="currencyFilter"><option value="all">All currencies</option></select></label>
+    <label>Warehouse<select id="warehouseFilter"><option value="all">All warehouses</option></select></label>
+    <label>Product<select id="productFilter"><option value="all">All products</option></select></label>
+    <label>Money display<select id="modeFilter"><option value="nzd">Converted NZD</option><option value="original">Original currency</option></select></label>
+    <label>Date basis<select id="dateFilter"><option value="order">Order date</option><option value="ship">Ship date</option></select></label>
+  </section>
+  <div class="status-row"><div id="status" role="status" aria-live="polite"></div><span id="rowCount"></span></div>
+  <div id="drillBanner" class="drill-banner" hidden><span id="drillText"></span><button id="clearDrill" class="text-button">Clear selection ×</button></div>
+  <section id="kpis" class="kpi-grid" aria-label="Key performance indicators"></section>
+  <div id="dashboard"></div>
+  <section class="method-note"><span>TRANSPARENT BY DESIGN</span><p id="methodNote">Revenue and cost are converted before summing. Unset exchange rates never silently remove transactions.</p></section>
+  <footer>Campfly · Sales & Operations Intelligence <span>Source: supplied workbook · Built for exploration, not audited financial reporting</span></footer>
+</main>
+<dialog id="settingsDialog" aria-labelledby="settingsTitle">
+  <form id="settingsForm"><div class="dialog-heading"><div><div class="eyebrow">TRANSPARENT ASSUMPTIONS</div><h2 id="settingsTitle">Currency & methodology</h2></div><button type="button" id="closeSettings" class="close-button" aria-label="Close currency settings">×</button></div>
+  <p>Rates mean <strong>NZD per one unit of source currency</strong>. Non-NZD rates start unset. Enter your own documented positive rates; they apply to every year as a fixed-rate scenario.</p>
+  <div id="rateInputs" class="rates-grid"></div>
+  <label class="wide-label">Rate source / assumption note<input id="rateNote" maxlength="250" placeholder="e.g. approved portfolio scenario, source and as-of date"></label>
+  <label class="wide-label">Threshold-late definition (calendar days)<input id="lateThreshold" type="number" min="0" max="365" step="1" required></label>
+  <div class="methodology"><strong>Read before interpreting</strong><ul><li>Rates and this note are stored only in this browser, not written to the public site or shared with other visitors.</li><li>Profit assumes unit costs use each order's currency. It excludes any unrecorded freight, tax or overhead.</li><li>The threshold is an analytical definition, not a verified delivery SLA.</li><li>Customer and product financial ranks follow your current currency and filters.</li><li>2019 orders end on 12 December. Shipments extend through 28 December.</li><li>Product 20 is retained despite no recorded sales. Maps use supplied coordinates; basemap tiles require internet.</li><li>This public static site has no authentication: its bundled records are downloadable.</li></ul></div>
+  <div class="dialog-actions"><button type="button" id="resetRates" class="button secondary">Clear assumed rates</button><button type="submit" class="button primary">Save assumptions</button></div>
+  </form>
+</dialog>
+<noscript>This dashboard needs JavaScript enabled. No backend or account is required.</noscript>
+</body></html>

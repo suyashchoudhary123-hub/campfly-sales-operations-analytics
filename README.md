@@ -72,8 +72,11 @@ Partial 2019 coverage; no verified exchange rates; assumed cost currency; no pro
 ## Portfolio outputs
 See [`docs/insights/Resume_Bullets.md`](docs/insights/Resume_Bullets.md), [`docs/insights/Publish_and_Refresh_Checklist.md`](docs/insights/Publish_and_Refresh_Checklist.md) and [`docs/evidence/Verified_Insights.csv`](docs/evidence/Verified_Insights.csv).
 
-## Project page
-Static project page (model diagram, wireframes, findings): https://suyashchoudhary123-hub.github.io/campfly-sales-operations-analytics/
+## Project page and interactive dashboard
+- Project page (model diagram, wireframes, findings): https://suyashchoudhary123-hub.github.io/campfly-sales-operations-analytics/
+- Interactive dashboard (filters, charts, map, order table): https://suyashchoudhary123-hub.github.io/campfly-sales-operations-analytics/dashboard/
+
+The dashboard is a static website in `docs/dashboard/`. Its `data.js` bundles the full order dataset, so anyone can download it.
 
 ## Repository layout
 ```
@@ -88,6 +91,7 @@ docs/evidence/    CSV tables behind each insight
 docs/reference/   Measure catalog, QA benchmarks, per-visual layout spec
 docs/assets/      Model diagram, Python charts, page wireframes
 docs/index.html   GitHub Pages landing page
+docs/dashboard/   Interactive static dashboard website (Plotly + Leaflet)
 ```
 
 ## License
