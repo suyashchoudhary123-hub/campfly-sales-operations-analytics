@@ -1,98 +1,116 @@
-# Campfly | Sales & Operations Intelligence
+# Campfly · Sales Intelligence
 
-A reproducible Power BI build package for sales profitability, customer/product performance and fulfillment analysis.
+A responsive, client-side analytics website generated from the supplied Campfly workbook. Ready for GitHub Pages: no npm installation, build process, backend, API key or database is needed.
 
-## Status
-**Prepared:** source audit; Power Query cleaning; star-schema model plan and image; DAX definitions; six-page visual/interaction blueprint; theme; design wireframes; Python-verified insights; validation files; publishing/refresh checklist.
+## IMPORTANT: public data
 
-**Not yet completed in Power BI Desktop/Service:** executing M/DAX in Desktop, constructing/validating the report, actual PBIX/project export, genuine report screenshots, publishing and scheduled refresh. Do not mistake design wireframes or Python analytical charts for Power BI report screenshots.
+The complete 7,991-order dataset, customer names and regional addresses are bundled in `data.js`. Anyone who can visit the site can download them. Filtering, pagination and hidden UI elements are NOT access control. Do not publish this version if the data is confidential or redistribution is prohibited. Anonymize the source before rebuilding if needed. A private repository does not by itself guarantee a private GitHub Pages website; check your organization's actual access-control configuration.
 
-## Problem statement
-Give sales and operations readers consistent views of revenue, contribution-style source profit, product/customer performance, geographic demand and lead-time patterns, while preventing mixed-currency sums and misleading partial-year comparisons.
+## Features
 
-## Dataset
-Source: user-supplied Campfly Sales Analysis Dashboard.xlsx. No external provenance, license, FX rates or business SLA was supplied. Obtain permission before redistributing real customer/address data.
-- 7,991 sales records, 7,991 unique order numbers.
-- Order dates 2017-01-01 to 2019-12-12; ship dates 2017-01-05 to 2019-12-28.
-- 50 customers; 100 regions; 15 dimension products, 14 with sales; 4 warehouses; 3 channels; 5 currencies.
-- 13 customer names need trimming; no missing sales fields or orphan dimension keys in the supplied source.
+- Six sections: overview, products, customers, geography, operations, order details.
+- Year, channel, source currency, warehouse and product filters.
+- Converted NZD versus original-currency display; original totals require one selected currency.
+- Order-date/ship-date selector and separate ship-month operational trend.
+- Editable positive FX assumptions and lead-time threshold, persisted in each visitor's browser only.
+- Interactive charts, region markers, and table row links that drill into orders.
+- Searchable, paginated records and CSV export of the current filtered/searched dataset.
+- Comparable annual periods, source-cutoff notes and explicit financial safeguards.
+- Responsive mobile navigation, keyboard controls, labels and skip link.
+- Bundled Plotly and Leaflet: chart scripts do not depend on a CDN. OpenStreetMap basemap tiles require internet; coordinates/tables remain available independently.
 
-## Tools
-Power BI Desktop / Service (build and deployment target); Power Query M; DAX; Python/pandas for independent source analysis; matplotlib for analytical charts; JSON Schema validation for theme.
+## Deploy to your existing GitHub repository (browser method)
 
-## Model
-FactSales centered on DimCustomer, DimRegion, DimProduct, DimCurrency, DimChannel, DimWarehouse and DimDate. All dimension-to-fact relationships 1:* single-direction. Order Date active; Ship Date inactive for role-specific measures.
+1. Extract the website ZIP on your computer.
+2. Open your existing repository on GitHub. Back up existing content and do not overwrite an existing website without reviewing it.
+3. Choose **Add file → Upload files**.
+4. Upload the CONTENTS of `Campfly_Website`, not the enclosing folder. The publishing root must contain `index.html`, `styles.css`, `app.js`, `data.js`, and the `vendor` directory. Preserve the folder structure. Include `.nojekyll` when your upload method permits hidden files.
+5. Commit the upload to your chosen branch. If this repository already contains another site, use its `/docs` directory instead and select that directory in the next step.
+6. Open **Settings → Pages**. Under **Build and deployment**, select **Deploy from a branch**.
+7. Select the branch holding the website and **/(root)** (or **/docs** if that is where the site was placed). Save. You need repository permission to configure this.
+8. Wait for the Pages deployment to complete; inspect the deployment status under Actions/Pages if there is an error.
+9. Open the site address shown in the Pages settings. Verify default NZD totals, vendor script loading, mobile layout and map tile availability.
 
-![Star schema](docs/assets/data_model.png)
+For an ordinary project repository the address normally includes your repository name. All site assets use relative paths, so no repository-name rewrite is required. Do not upload only the HTML file: the scripts, data, styles and vendor folder are required.
 
-## Currency/financial policy
-NZD reporting target. NZD=1; non-NZD rates are deliberately missing until documented assumptions are supplied. Convert revenue AND costs row-by-row before summing; stop/blank invalid-rate contexts. Original amounts require one source currency. Current financial insights use NZD transactions only, not assumed conversion of other currencies. Costs' currency is not independently verified; profits/margins assume row currency applies to costs. This source profit is revenue minus recorded unit costs, not net profit with freight/tax/overheads unless those costs are documented.
+If you cannot see a Pages option, check repository permissions and your account/organization's Pages availability. No GitHub deployment was performed when this package was generated.
 
-## Report pages
-1. Executive Overview — finance KPIs, monthly revenue/profit, channels, year and comparable-period views.
-2. Product Analysis — financial matrix, quantity/margin scatter, top/bottom products.
-3. Customer Analysis — top customers, distribution, Pareto, year matrix.
-4. Geographic Analysis — coordinates-based map, top regions and channel matrix.
-5. Operations — warehouse performance, lead-time distribution and ship-date late trend.
-6. Details — order-level original and converted amounts with compatible drill-through targets.
+## Git alternative
 
-## Key verified findings
-- Partial-year adjustment: NZD 2019 revenue versus full 2018 is -8.91%, but matched Jan 1-Dec 12 YoY is -1.85%.
-- Wholesale is 54.14% of NZD revenue; Distributor has the highest observed NZD channel margin at 37.73%.
-- Product 7 leads NZD revenue (NZD 10.10m); Product 4 leads observed NZD margin (41.51%), on only 53 NZD orders.
-- NZD customer base is not a classic 80/20 pattern: top 10 are 24.07% of revenue and 38 of 50 customers reach at least 80%.
-- 49.31% of all orders exceed the analytical 10-calendar-day threshold; no promised-date SLA exists.
-- AXW291 accounts for 47.00% of all order volume and 48.07% of threshold-late orders, making it a high-volume diagnostic priority, not a proven causal bottleneck.
-- Only 37.87% of orders are NZD: missing FX prevents reliable all-currency converted financial findings.
-- Product 20 is a valid dimension member with no recorded sales and should not be dropped silently.
+Run this INSIDE a local clone of your existing repository, after copying the website contents into the desired publishing directory:
 
-See [`docs/insights/Insights_and_Recommendations.md`](docs/insights/Insights_and_Recommendations.md) and the CSV tables in [`docs/evidence/`](docs/evidence/) for scope and recommendations.
-
-## Visual assets — not report screenshots
-![Comparable NZD revenue](docs/assets/NZD_Comparable_Revenue_Analysis.png)
-![Warehouse lead-time rates](docs/assets/Warehouse_Late_Rates_Analysis.png)
-![NZD customer concentration](docs/assets/NZD_Customer_Concentration_Analysis.png)
-
-These are computed Python charts. Design previews are supplied separately, for example:
-![Executive design wireframe](docs/assets/Executive_Overview_Wireframe.png)
-
-## Actual screenshot checklist — still outstanding
-After building/validating the report, capture six screenshots with readable labels, default NZD selection and visible partial-year/FX notes. Add genuine files for Executive, Product, Customer, Geography, Operations and Details here. Do not replace this section with wireframes and claim the report is implemented.
-
-## Reproduce
-1. Start with Stage 1: configure local file parameter, paste M queries, load tables, create marked DimDate, set relationships/categories.
-2. Stage 2: create _Measures, paste definitions individually and compare NZD/all-order QA benchmarks.
-3. Stage 3: import theme, create supporting measures/region label, build 50 specified visuals, then navigation/bookmarks/tooltips/drill targets and validate interactions.
-4. Stage 4: review verified insights, replace missing FX only with documented approved assumptions, capture actual screenshots, and follow the publish/refresh checklist.
-5. Static historical source does not need scheduled refresh unless it will change. Local File.Contents requires a reachable source/gateway or a deliberate authenticated cloud-source redesign for Service refresh.
-
-## Limitations
-Partial 2019 coverage; no verified exchange rates; assumed cost currency; no promise date, delay reason, returns, discount, tax/freight/overhead breakdown, targets or historical prices independent of source. Descriptive margins/warehouse comparisons are not causal or tested forecasts. Raw multi-currency sums are prohibited. Hidden pages/columns are not security controls. DAX/Power BI visuals have not yet been executed here.
-
-## Portfolio outputs
-See [`docs/insights/Resume_Bullets.md`](docs/insights/Resume_Bullets.md), [`docs/insights/Publish_and_Refresh_Checklist.md`](docs/insights/Publish_and_Refresh_Checklist.md) and [`docs/evidence/Verified_Insights.csv`](docs/evidence/Verified_Insights.csv).
-
-## Project page and interactive dashboard
-- Project page (model diagram, wireframes, findings): https://suyashchoudhary123-hub.github.io/campfly-sales-operations-analytics/
-- Interactive dashboard (filters, charts, map, order table): https://suyashchoudhary123-hub.github.io/campfly-sales-operations-analytics/dashboard/
-
-The dashboard is a static website in `docs/dashboard/`. Its `data.js` bundles the full order dataset, so anyone can download it.
-
-## Repository layout
-```
-data/             Source workbook (confirm you may redistribute it)
-powerquery/       M queries: pFilePath, SourceWorkbook, FactSales, Dim* tables
-model/            DimDate (DAX calendar) and relationships.csv
-dax/              _Measures table, 47 measures (measures/), report helpers (report-support/)
-theme/            Campfly_Theme.json
-docs/guides/      Stage 1 (model), Stage 2 (DAX), Stage 3 (visuals) build guides
-docs/insights/    Insights, resume bullets, publish/refresh checklist
-docs/evidence/    CSV tables behind each insight
-docs/reference/   Measure catalog, QA benchmarks, per-visual layout spec
-docs/assets/      Model diagram, Python charts, page wireframes
-docs/index.html   GitHub Pages landing page
-docs/dashboard/   Interactive static dashboard website (Plotly + Leaflet)
+```bash
+git status
+git add index.html styles.css app.js data.js vendor README.md THIRD_PARTY_NOTICES.md QA_Report.json tools .nojekyll
+git commit -m "Add Campfly interactive analytics website"
+git push
 ```
 
-## License
-MIT. See `LICENSE`.
+Review `git status` first and do not stage unrelated changes. Then configure Pages as above. Use the correct branch for your existing repository; no branch name is assumed by the website.
+
+## Preview locally
+
+You can open `index.html` directly. Recommended for consistent browser behavior:
+
+```bash
+python -m http.server 8000
+```
+
+Run that from the website directory and open the local address printed by Python. This is a preview server only, not a GitHub hosting requirement.
+
+## Data and currency policy
+
+- 7,991 orders; 50 customers; 100 regions; 15 dimension products (Product 20 has no recorded sales).
+- Orders: 1 Jan 2017–12 Dec 2019. Shipments: 5 Jan 2017–28 Dec 2019.
+- Default selection: NZD only. Default money display: NZD; date basis: Order date.
+- NZD rate is fixed at 1. USD/AUD/GBP/EUR are initially unset, NOT guessed.
+- Converted totals multiply EACH row's revenue and cost by its rate before summing. Missing/invalid rates cause the relevant aggregate to be blank; visitors see a warning.
+- Original currency mode requires one currency, and does not require FX assumptions.
+- Positive rates entered by a visitor are fixed-rate scenarios across all years, not verified historical FX. They are stored in localStorage in that browser, not written to the repository. Reset filters does not clear saved assumptions; use Currency & methodology → Clear assumed rates → Save assumptions.
+- Profit assumes recorded unit costs share the row currency. It is not net profit unless unrecorded overheads/tax/freight are separately established.
+- Threshold-late defaults to lead time strictly >10 calendar days. This is not a verified SLA.
+- Matched comparisons use Jan 1–Dec 12 for 2019 orders and Jan 1–Dec 28 for 2019 shipments, with the same prior-year window. The reference table deliberately ignores the Year dropdown; other nondate filters still apply.
+- Operational late-shipment trend always uses SHIP DATE, regardless of the global Date basis setting; clicking a ship month sets the date basis to Ship date and opens that shipment cohort.
+- Dense/unique ranks should not be interpreted as causal performance. Currency/subset changes can alter rankings.
+- Product 20 remains visible as No sales instead of being dropped.
+- This is historical static data. There is no automatic Excel refresh, Power BI Service connection, live market-rate feed or authentication.
+
+## Update the workbook data
+
+Keep the input workbook OUTSIDE your public repository if it must not be redistributed. The website still exposes the regenerated dataset unless it is anonymized first.
+
+```bash
+python -m pip install pandas openpyxl
+python tools/rebuild_data.py "/path/to/Campfly Sales Analysis Dashboard.xlsx"
+```
+
+This replaces `data.js`, not the website code. Run validation again and update date labels/year options/source record-count labels if the source period or row count changes; those historical coverage labels are intentionally explicit in this version. The converter checks keys, arithmetic, unique order numbers and negative lead times; it does not anonymize or verify cost currency. Upload/commit the refreshed data only after permission and QA.
+
+## Files
+
+```text
+index.html                Website shell
+styles.css                Responsive design
+app.js                    Filters, calculations, charts, drilldown and export
+data.js                   Public source records and dimensions
+vendor/                   Bundled Plotly/Leaflet and their licenses
+.nojekyll                 Skip unnecessary Jekyll processing
+QA_Report.json            Actual automated browser test results
+tools/rebuild_data.py      Optional workbook-to-JavaScript converter
+THIRD_PARTY_NOTICES.md     Library and tile attribution
+```
+
+## Verification
+
+Automated local Chromium checks passed for all six pages, default NZD revenue, missing-FX blanks, original-USD revenue, retained Product 20, Product 7 drilldown, cross-month ship-date detail cohorts, positive-rate conversion scenarios, search, pagination, 7,991-row CSV export and 390px mobile layout. No JavaScript page errors were observed in these tested flows. See `QA_Report.json`.
+
+Test assumptions were temporary browser-only values and are NOT embedded in the site's default rates. External tile availability, deployment permissions, all possible filter combinations and organization security policies were not exhaustively tested. This package is a working website, not a PBIX report.
+
+## Official deployment reference
+
+GitHub Docs — Configuring a publishing source for your GitHub Pages site:
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+## Ownership and licenses
+
+The custom app code is provided for your project. Choose your repository's code license deliberately. Dataset redistribution permission is not established by the app code or bundled third-party licenses. Keep vendor license notices and visible OpenStreetMap attribution.
